@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-md bg-{{mode}} navbar-{{mode}}">
+  <div id="mySidenav" class="sidenav bg-{{mode}} " [style.width]="sidenavWidth" tabindex="0" >
+    <a style="cursor: pointer;" class="closebtn bg-{{mode}}" tabindex="0" (keydown)="closeNav()" (click)="closeNav()">&times;</a>
+    <a routerLink="/aboutus" >About Us</a>
+    <a routerLink="/contactus">Contact Us</a>
+  </div>
+<!-- using unicode character &#187 for sidenav arrow -->
+  <span style="font-size:30px;cursor:pointer" (keydown)="toggleNav()" tabindex="0" (click)="toggleNav()">&#187;</span>
+  
+
+  <div class="justify-content-center ">
+    <h1 class="navbar-title">Shop Nest</h1>
+  </div>
+
+ 
+     <div class="mode">
+      <a (click)="changeMode()" (keydown)="changeMode()" tabindex="0" class="btn my-2 my-sm-0 ml-2">
+        <img width="35" height="30" [src]="mode === 'light' ? 'https://img.icons8.com/ios-glyphs/30/moon-symbol.png' : 'https://img.icons8.com/external-flat-papa-vector/78/external-Light-Mode-interface-flat-papa-vector.png'" alt="day-and-night"/>
+      </a>
+     </div>
+ 
+
+</nav>
+

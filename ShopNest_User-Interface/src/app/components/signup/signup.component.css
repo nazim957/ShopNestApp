@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+  }
+
+  .mat-horizontal-stepper-header-container {
+    justify-content: space-around;
+  }
+
+  .mat-step-label {
+    white-space: normal !important;
+    text-align: center;
+    width: auto !important;
+  }

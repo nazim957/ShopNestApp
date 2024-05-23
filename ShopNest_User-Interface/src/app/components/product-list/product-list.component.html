@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let tempProduct of products" class="col-md-3 mb-2">
+      <div class="card  text-bg-{{currentMode}} h-100">
+        <a routerLink="/products/{{ tempProduct.id }}">
+          <img src="{{tempProduct.imageUrl}}" class="card-img-top" alt="...">
+        </a>
+        <div class="card-body d-flex flex-column">
+          <a routerLink="/products/{{ tempProduct.id }}">
+          <h5 class="card-title">{{tempProduct.name}}</h5>
+          </a>
+          <p class="card-text flex-grow-1">{{tempProduct.unitPrice | currency:'INR'}}</p>
+          <a (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm mt-auto">Add to Cart</a> <!-- Added btn-sm class to make the button smaller -->
+        </div>
+      </div>
+    </div>
+    <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+      No products found.
+  </div>
+  </div>
+</div>

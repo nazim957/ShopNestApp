@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="cart">
+    <a  routerLink="/cart-details" class=" rounded-pill cart-link btn ">
+      <div class="">{{ totalPrice | currency:'INR'}} 
+        <span> | </span>
+        <span>{{totalQuantity}}</span></div>
+      <span class="icon"><i class="fa fa-cart-shopping"></i></span>
+    </a>
+  </div>
+  
+</div>

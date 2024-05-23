@@ -1,0 +1,33 @@
+.cart-link {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 10px 10px; 
+    background-color: #cbe5a0; 
+    color: #000000; /* Text color */
+    text-decoration: none; 
+  }
+  
+  .total {
+    /* Your styles for the total */
+  }
+  
+  .icon {
+    margin-left: 10px; /* Adjust the spacing between total and icon */
+  }
+  
+  .icon i {
+    /* Your styles for the icon */
+  }
+
+  @media (max-width: 500px) {
+    .cart-link {
+      display: flex;
+      align-items: center;
+      border-radius: 20px;
+      padding: 10px 10px;
+      margin-top: 5px;
+    
+    }
+    }
+  

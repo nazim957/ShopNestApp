@@ -1,0 +1,65 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link " aria-current="page" href="#"> <img width="30" height="30" src="https://img.icons8.com/color/30/india.png" alt="india"/></a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Categories</a>
+    <ul  class="dropdown-menu">
+      <li class="active" *ngFor="let item of productCategories" [routerLink]="'/category/'+item.categoryName" routerLinkActive="active-link" ><a class="dropdown-item " role="button" >{{item.categoryName}}</a></li>
+    </ul>
+  </li>
+  <li *ngIf="!login.isLockedIn()" class="nav-item">
+    <a class="nav-link" routerLink="/login">Login</a>
+  </li>
+
+  <li (click)="logout()" (keydown)="logout()" role="button" tabindex="0" *ngIf="login.isLockedIn()" class="nav-item">
+    <a class="nav-link" routerLink="/login">Logout</a>
+  </li>
+
+  <li *ngIf="!login.isLockedIn()" class="nav-item">
+    <a class="nav-link " routerLink="/signup" tabindex="-1" aria-disabled="true">Register</a>
+  </li>
+
+  <li *ngIf="login.isLockedIn()" class="nav-item">
+    <a class="nav-link " routerLink="/order-history" tabindex="-1" aria-disabled="true">Orders</a>
+  </li>
+
+  <li class="nav-item">
+   <div class="container">
+    <form class="form-inline">
+      <div class="input-group" style="margin-left: 30px;">
+        <input
+          #myInput
+          type="text"
+          name="searchKeyword"
+          class="form-control rounded-pill  text-bg-{{currentMode}} "
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          style="font-size: 16px; padding: 10px 16px;"
+          (keyup.enter)="dosearch(myInput.value)"
+        />
+        <div class="input-group-append" id="search-box">
+          <button class="btn btn-outline-success rounded-pill" (click)="dosearch(myInput.value)">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+   </div>
+   
+  </li>
+  <li *ngIf="login.isLockedIn()" class="nav-item">
+    <div id="welcome">
+      <span class="navbar-text ">
+        <strong>Welcome {{login.getUserName()}} !!</strong>
+      </span>
+    </div>
+      
+  </li>
+
+  <li class="nav-item ms-auto">
+    <app-cart-status></app-cart-status>
+  </li>
+
+</ul>

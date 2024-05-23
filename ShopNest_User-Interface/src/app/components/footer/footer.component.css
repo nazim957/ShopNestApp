@@ -1,0 +1,6 @@
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px; /* Adjust the value to set the desired space between elements */
+}

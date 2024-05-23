@@ -1,0 +1,207 @@
+<!-- <section class="card  vh-100%" style="background-color: #eee"> -->
+  <div class="container mt-1 mb-1">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-10">
+        <div class="card text-black">
+          <div class="card-body bg-{{currentMode}} p-md-3">
+            <div class="row justify-content-center align-items-center">
+              <div class="col-md-8 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <h1 class="text-center fw-bold mb-4">Sign up</h1>
+  
+                <form (ngSubmit)="formSubmit()" #registerForm="ngForm">
+                  <!-- Email Field -->
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Your Email</label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                      <input
+                        required
+                        [(ngModel)]="user.email"
+                        name="email"
+                        type="email"
+                        class="form-control"
+                        id="email" 
+                        placeholder="Enter Email Address"
+                        #email="ngModel"
+                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
+                      />
+                    </div>
+                    <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+                      <span *ngIf="email.errors?.['required']">Email is required.</span>
+                      <span *ngIf="email.errors?.['pattern'] && !email.errors?.['required']">Email is invalid. Please write email in correct</span>
+                  </mat-error>
+                  </div>
+  
+                  <!-- User Name Field -->
+                  <div class="mb-3">
+                    <label for="username" class="form-label">User Name</label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="fas fa-user"></i>
+                      </span>
+                      <input
+                        [(ngModel)]="user.userName"
+                        type="text"
+                        name="username"
+                        id="username"
+                        class="form-control"
+                        placeholder="Enter User Name"
+                        #username="ngModel"
+                        minlength="4"
+                        maxlength="15"
+                        pattern="[a-zA-Z][a-zA-Z0-9_]*"
+                        required
+                      />
+                    </div>
+                    <mat-error *ngIf="username.invalid && (username.dirty || username.touched)">
+                      <span *ngIf="username.errors?.['required']">User Name is required.</span>
+                      <span *ngIf="username.errors?.['minlength']">Username must be at least 4 characters long.</span>
+                      <span *ngIf="username.errors?.['maxlength']">Username cannot be longer than 15 characters.</span>
+                      <span *ngIf="username.errors?.['pattern']">Username must start with a letter and can only contain letters, numbers, and underscores.</span>
+                  </mat-error>
+                  </div>
+  
+                  <!-- Phone Number Field -->
+                  <div class="mb-3">
+                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="fas fa-phone"></i>
+                      </span>
+                      <input
+                        [(ngModel)]="user.phoneNumber"
+                        type="tel"
+                        name="phoneNumber"
+                        id="phoneNumber"
+                        class="form-control"
+                        placeholder="Enter Phone Number"
+                        #phoneNumber="ngModel"
+                        pattern="[0-9]{10}"
+                        required
+                      />
+                    </div>
+                    <mat-error  *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)">
+                      <span *ngIf="phoneNumber.errors?.['required']">Phone number is required.</span>
+                      <span *ngIf="phoneNumber.errors?.['pattern']">Phone number must be a 10-digit number.</span>
+                    </mat-error>
+                  </div>
+
+                  <!-- Password Field -->
+                  <div class="mb-3">
+                    <label for="password" name="password" class="form-label">Password</label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="fas fa-lock"></i>
+                      </span>
+                      <input
+                        required
+                        [(ngModel)]="user.password"
+                        name="password"
+                        type="password"
+                        class="form-control"
+                        matInput
+                        placeholder="Enter Password"
+                        minlength="8"
+                        #password="ngModel"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}"
+                      />
+                    </div>
+                    <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
+                      <span *ngIf="password.errors?.['required']">Password is required.</span>
+                      <span *ngIf="password.errors?.['minlength']">Password must be at least 8 characters long.</span>
+                      <span *ngIf="password.errors?.['pattern']">Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%*#?&).</span>
+                  </mat-error>
+                  </div>
+  
+                  <!-- Security Question Field -->
+                  <div class="mb-3">
+                    <label for="securityQuestion" name="securityQuestion" class="form-label">Security Question</label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="fas fa-question-circle"></i>
+                      </span>
+                      <select
+                        class="form-control"
+                        id="securityQuestion"
+                        [(ngModel)]="user.securityQuestion"
+                        name="securityQuestion"
+                        #securityQuestion="ngModel"
+                        required
+                      >
+                        <option value="" disabled>Select a security question</option>
+                        <option value="What is your favorite book?">What is your favorite book?</option>
+                        <option value="What is your first nickname?">What is your first nickname?</option>
+                        <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+                      </select>
+                    </div>
+                    <mat-error *ngIf="securityQuestion.invalid && (securityQuestion.dirty || securityQuestion.touched)">
+                      Security Question is required.
+                    </mat-error>
+                  </div>
+  
+                  <!-- Security Answer Field -->
+                  <div class="mb-3">
+                    <label for="answer" name="answer" class="form-label">Security Answer</label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="fas fa-key"></i>
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="answer"
+                        [(ngModel)]="user.securityAnswer"
+                        name="answer"
+                        placeholder="Enter Security Answer"
+                        #answer="ngModel"
+                        required
+                      />
+                    </div>
+                    <mat-error *ngIf="answer.invalid && (answer.dirty || answer.touched)">
+                      Security Answer is required.
+                    </mat-error>
+                  </div>
+  
+                  <!-- Terms of Service Checkbox -->
+                  <div class="form-check mb-3">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      name="termsCheckbox"
+                      id="termsCheckbox"
+                      required
+                      [(ngModel)]="termsAccepted"
+                      #termsCheckbox="ngModel"
+                    />
+                    <label class="form-check-label" name="termsCheckbox" for="termsCheckbox">
+                      I agree to all statements in <a href="#!">Terms of service</a>
+                    </label>
+                  </div>
+  
+                  <!-- Register and Clear Buttons -->
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" [disabled]="!termsAccepted || registerForm.invalid" class="btn btn-primary btn-md me-2">
+                      Register
+                    </button>
+                    <button type="reset" class="btn btn-danger btn-md">
+                      Clear
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-8 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                <img src="../../../assets/aaa.png" alt="Sample image" class="img-fluid" style="border-radius: 10px;" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- </section> -->
+  
+  <!-- {{user | json}} -->
+  

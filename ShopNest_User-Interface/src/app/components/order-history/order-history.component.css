@@ -1,0 +1,10 @@
+.empty{
+    margin-bottom: 355px;
+}
+
+@media (max-width: 500px) {
+    .empty{
+        margin-bottom: 360px;
+    }
+      
+    }

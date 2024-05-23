@@ -1,0 +1,19 @@
+@media (max-width: 768px) {
+    /* Styles for small screens */
+    
+    img{
+        max-height: 350px;
+        margin: auto -50px;
+    }
+  }
+  
+  
+  @media (min-width: 500px) {
+    /* Styles for larger screens */
+
+img{
+    max-height: 350px;
+    margin: auto -115px;
+}
+  }
+  

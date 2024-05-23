@@ -1,0 +1,27 @@
+.active-link{
+    font-weight: bold;
+}
+
+#search-box{
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 120px;
+}
+
+#welcome{
+    margin-right: 130px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+@media (max-width: 500px) {
+
+    #search-box{
+        
+        margin-right: 0px;
+    }
+    #welcome{
+        margin-right: 0px;
+        
+    }
+}
