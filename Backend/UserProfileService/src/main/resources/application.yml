@@ -42,7 +42,7 @@
 #  mail:
 #    host: smtp.office365.com
 #    port: 587
-#    username: shopnestverify@outlook.com
+#    username:
 #    password:
 #    properties:
 #      mail:
