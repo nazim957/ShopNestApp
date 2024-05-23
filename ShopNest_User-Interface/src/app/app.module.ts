@@ -31,8 +31,6 @@ import { LoginComponent } from './components/login/login.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { AuthInterceptorProviders } from './services/auth.interceptor';
 import { FooterComponent } from './components/footer/footer.component';
-import { ConfirmAccountComponent } from './components/confirm-account/confirm-account.component';
-
 
 
 @NgModule({
@@ -48,8 +46,7 @@ import { ConfirmAccountComponent } from './components/confirm-account/confirm-ac
     SignupComponent,
     LoginComponent,
     OrderHistoryComponent,
-    FooterComponent,
-    ConfirmAccountComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,

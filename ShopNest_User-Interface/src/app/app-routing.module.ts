@@ -9,12 +9,9 @@ import { LoginComponent } from './components/login/login.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { canDeactivateGuard } from './services/can-deactivate.guard';
 import { authGuard } from './services/auth.guard';
-import { ConfirmAccountComponent } from './components/confirm-account/confirm-account.component';
-
 const routes: Routes = [
 
   { path:'order-history', component:OrderHistoryComponent,  canActivate: [authGuard] },
-  { path: 'confirm-account', component: ConfirmAccountComponent },
   {path: 'login',component: LoginComponent, pathMatch: 'full'},
   {path: 'signup',component: SignupComponent,pathMatch: 'full',  canDeactivate:[canDeactivateGuard]},
   {path: 'checkout', component: CheckoutComponent, canActivate: [authGuard] },
