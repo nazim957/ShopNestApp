@@ -94,7 +94,7 @@ public class UserServiceImpl implements UserService {
         mailMessage.setSubject("Complete Registration!");
         mailMessage.setText("Hi " + user.getUserName() + ",\n\n"
                 + "Welcome to ShopNest! To complete your registration, please click the link below:\n"
-                + "http://localhost:8081/api/v1/confirm-account?token=" + confirmationToken.getConfirmationToken() + "\n\n"
+                + "https://shopnestuserservice.onrender.com/api/v1/confirm-account?token=" + confirmationToken.getConfirmationToken() + "\n\n"
                 + "Thank you for choosing ShopNest!\n"
                 + "Best regards,\n"
                 + "The ShopNest Team");
