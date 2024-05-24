@@ -12,10 +12,13 @@ import com.shopnest.user.repository.ConfirmationTokenRepository;
 import com.shopnest.user.repository.UserRepository;
 import domain.UserDTO;
 
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +42,10 @@ public class UserServiceImpl implements UserService {
 
     @Value("${app.service.message2}")
     private String message2;
+
+    @Value("${spring.mail.username}")
+    private String emailUsername;
+
     @Autowired
     public UserServiceImpl(UserRepository userRepository, Producer producer, PasswordEncoder passwordEncoder) {
         super();
@@ -89,21 +96,62 @@ public class UserServiceImpl implements UserService {
         confirmationTokenRepository.save(confirmationToken);
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setFrom("shopnestverify@outlook.com");
+        mailMessage.setFrom(emailUsername);
         mailMessage.setTo(user.getEmail());
         mailMessage.setSubject("Complete Registration!");
-        mailMessage.setText("Hi " + user.getUserName() + ",\n\n"
-                + "Welcome to ShopNest! To complete your registration, please click the link below:\n"
-                + "https://shopnestuserservice.onrender.com/api/v1/confirm-account?token=" + confirmationToken.getConfirmationToken() + "\n\n"
-                + "Thank you for choosing ShopNest!\n"
-                + "Best regards,\n"
-                + "The ShopNest Team");
+//        mailMessage.setText("Hi " + user.getUserName() + ",\n\n"
+//                + ""
+//                + "Welcome to ShopNest! To complete your registration, please click the link below:\n"
+//                + "https://shopnestuserservice.onrender.com/api/v1/confirm-account?token=" + confirmationToken.getConfirmationToken() + "\n\n"
+//                + "Thank you for choosing ShopNest!\n"
+//                + "Best regards,\n"
+//                + "The ShopNest Team");
 
-        emailService.sendEmail(mailMessage);
+//        emailService.sendEmail(mailMessage);
+
+        try {
+            sendHtmlEmail(user, confirmationToken.getConfirmationToken());
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to send email");
+        }
 
             return savedUser;
     }
 
+    private void sendHtmlEmail(User user, String token) throws MessagingException {
+        MimeMessage message = emailService.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+
+//        String htmlMsg = "<p>Hi " + user.getUserName() + ",</p>"
+//                + "<p style='text-align: center;'><img src='https://shopnestapp.netlify.app/assets/logogif.gif' alt='ShopNest' style='display: block; margin: 0 auto; max-width: 300px;'></p>"
+//                + "<p>Welcome to ShopNest! To complete your registration, please click the button below:</p>"
+//                + "<p style='text-align: center;'><a href='https://shopnestuserservice.onrender.com/api/v1/confirm-account?token=" + token + "' style='padding: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;'>Complete Registration</a></p>"
+//                + "<p>Thank you for choosing ShopNest!</p>"
+//                + "<p>Best regards,<br>The ShopNest Team</p>";
+
+        String htmlMsg = "<div style='width: 100%; display: flex; justify-content: center;'>"
+                + "<div style='max-width: 300px; border: 1px solid #ddd; border-radius: 10px; padding: 20px; text-align: center; font-family: Arial, sans-serif;'>"
+                + "<p style='text-align: center;'><img src='https://shopnestapp.netlify.app/assets/logogif.gif' alt='ShopNest' style='display: block; margin: 0 auto; max-width: 100%; height: auto; border-radius: 10px;'></p>"
+                + "<p>Hi " + user.getUserName() + ",</p>"
+                + "<p>Welcome to ShopNest! To complete your registration, please click the button below:</p>"
+                + "<p style='text-align: center;'><a href='https://shopnestuserservice.onrender.com/api/v1/confirm-account?token=" + token + "' style='padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; display: inline-block;'>Complete Registration</a></p>"
+                + "</div>"
+                + "</div>"
+                + "<br>"
+                + "<br>"
+                + "<br>"
+                + "<br>"
+                + "<p>Thank you for choosing ShopNest!</p>"
+                + "<p>Best regards,<br>The ShopNest Team</p>";
+
+        helper.setTo(user.getEmail());
+        helper.setSubject("Complete Registration!");
+        helper.setText(htmlMsg, true);
+        helper.setFrom(emailUsername);
+
+        emailService.sendHtmlEmail(message);
+    }
     @Override
     public boolean updatePassword(String email, ForgotPassword forgotPassword) throws SecurityMismatchException, UserNotFoundException, UserNotVerifiedException {
         User byEmail = userRepository.findByEmail(email);
@@ -163,7 +211,7 @@ public class UserServiceImpl implements UserService {
                     + "document.getElementById('message').innerText = 'Redirecting to login...';"
                     + "}, 4000);"  // Show 'Redirecting to login...' after 4 seconds
                     + "setTimeout(function() {"
-                    + "window.location.href = 'http://localhost:4200/login';"
+                    + "window.location.href = 'https://shopnestapp.netlify.app/login';"
                     + "}, 6000);"  // Redirect after 6 seconds
                     + "</script>"
                     + "</body></html>";
