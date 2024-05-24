@@ -11,6 +11,7 @@ import { canDeactivateGuard } from './services/can-deactivate.guard';
 import { authGuard } from './services/auth.guard';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 const routes: Routes = [
 
   {path: 'aboutus',component: AboutUsComponent,pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'order-history', component:OrderHistoryComponent,  canActivate: [authGuard] },
   {path: 'login',component: LoginComponent, pathMatch: 'full'},
   {path: 'signup',component: SignupComponent,pathMatch: 'full',  canDeactivate:[canDeactivateGuard]},
+  {path:'forgot',component:ForgotpasswordComponent,pathMatch:'full'},
   {path: 'checkout', component: CheckoutComponent, canActivate: [authGuard] },
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'products/:id', component: ProductDetailsComponent},

@@ -33,6 +33,7 @@ import { AuthInterceptorProviders } from './services/auth.interceptor';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     OrderHistoryComponent,
     FooterComponent,
     AboutUsComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    ForgotpasswordComponent
   ],
   imports: [
     BrowserModule,
