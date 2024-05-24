@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
-          <div class="card mt-3">
+          <div class="card mt-3 text-bg-{{currentMode}} ">
             <div class="card-body">
               <!-- customer form group -->
               <div formGroupName="customer">
@@ -37,7 +37,7 @@
             </div>
           </div>
 
-          <div class="card mt-3">
+          <div class="card mt-3 text-bg-{{currentMode}}">
             <div class="card-body">
               <!-- Shipping form group -->
         <div formGroupName="shippingAddress">
@@ -133,7 +133,7 @@
       </label>
     </div>
 
-          <div class="card mt-3">
+          <div class="card mt-3 text-bg-{{currentMode}}">
             <div class="card-body">
               <!-- Billing form group -->
         <div formGroupName="billingAddress">
@@ -214,7 +214,7 @@
             </div>
           </div>
 
-          <div class="card mt-3">
+          <div class="card mt-3 text-bg-{{currentMode}}">
             <div class="card-body">
   <!-- credit card form group -->
   <div formGroupName="creditCard">
@@ -302,7 +302,7 @@
     </div>
 
       <!-- order details -->
-      <div class="card mt-3">
+      <div class="card mt-3 text-bg-{{currentMode}}">
         <div class="card-body">
           <h3 class="card-title">Review Your Order</h3>
           <p>Total Quantity: {{ totalQuantity }}</p>

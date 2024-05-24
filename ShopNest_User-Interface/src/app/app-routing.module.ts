@@ -9,9 +9,13 @@ import { LoginComponent } from './components/login/login.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { canDeactivateGuard } from './services/can-deactivate.guard';
 import { authGuard } from './services/auth.guard';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 const routes: Routes = [
 
-  { path:'order-history', component:OrderHistoryComponent,  canActivate: [authGuard] },
+  {path: 'aboutus',component: AboutUsComponent,pathMatch: 'full' },
+  {path: 'contactus',component: ContactUsComponent,pathMatch: 'full' },
+  {path:'order-history', component:OrderHistoryComponent,  canActivate: [authGuard] },
   {path: 'login',component: LoginComponent, pathMatch: 'full'},
   {path: 'signup',component: SignupComponent,pathMatch: 'full',  canDeactivate:[canDeactivateGuard]},
   {path: 'checkout', component: CheckoutComponent, canActivate: [authGuard] },

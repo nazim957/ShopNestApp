@@ -32,7 +32,7 @@ export class ProductService {
   searchProducts(theKeyword: string): Observable<Product[]> {
 
     // need to build URL based on the keyword 
-    const searchUrl = `${this.baseUrl}/search?name=${theKeyword}`;
+    const searchUrl = `${this.prodUrl}/api/products/search?name=${theKeyword}`;
     return this.httpClient.get<Product[]>(searchUrl);
   }
 

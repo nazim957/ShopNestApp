@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/common/cart-item';
 import { CartService } from 'src/app/services/cart.service';
+import { ModeService } from 'src/app/services/mode.service';
 
 @Component({
   selector: 'app-cart-details',
@@ -9,14 +10,24 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartDetailsComponent implements OnInit {
 
+   currentMode = 'light';
+
   cartItems: CartItem[]=[]
   totalPrice:number=0;
   totalQuantity:number=0
 
-  constructor(private cartService:CartService)
+  constructor(private cartService:CartService, private modeService: ModeService)
   {}
 
   ngOnInit(): void {
+
+     // Subscribe to mode changes
+     this.modeService.currentMode$.subscribe((mode) => {
+      this.currentMode = mode;
+    // console.log("MODE Wishlist"+ this.currentMode);
+      
+    });
+    
     this.listCartDetails();
   }
 

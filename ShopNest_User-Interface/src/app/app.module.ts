@@ -31,6 +31,8 @@ import { LoginComponent } from './components/login/login.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { AuthInterceptorProviders } from './services/auth.interceptor';
 import { FooterComponent } from './components/footer/footer.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { FooterComponent } from './components/footer/footer.component';
     SignupComponent,
     LoginComponent,
     OrderHistoryComponent,
-    FooterComponent
+    FooterComponent,
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

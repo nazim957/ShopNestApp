@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Router } from '@angular/router';
 import { ProductCategory } from 'src/app/common/product-category';
@@ -18,7 +19,7 @@ export class SidebarComponent implements OnInit{
   productCategories: ProductCategory[] =[];
   
   constructor(private productService: ProductService, private router: Router,
-     public login: LoginService, private modeService: ModeService) { }
+     public login: LoginService, private modeService: ModeService, private snack: MatSnackBar) { }
 
   ngOnInit() {
 
@@ -46,6 +47,12 @@ export class SidebarComponent implements OnInit{
   dosearch(value:string)
   {
     //console.log(`value=${value}`)
+    if (value.trim() === '') {
+      this.snack.open('Please enter some keyword for searching', '', {
+        duration: 3000,
+      });
+      return
+    }
     this.router.navigateByUrl(`/search/${value}`)
   }
 

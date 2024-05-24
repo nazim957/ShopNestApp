@@ -11,6 +11,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { DropdownFormService } from 'src/app/services/dropdown-form.service';
 import { LoginService } from 'src/app/services/login.service';
+import { ModeService } from 'src/app/services/mode.service';
 import { CustomValidators } from 'src/app/validators/custom-validators';
 import Swal from 'sweetalert2';
 
@@ -20,6 +21,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit{
+
+  currentMode = 'light';
 
   checkoutFormGroup!: FormGroup; //1 steps for formgroup
 
@@ -38,10 +41,17 @@ export class CheckoutComponent implements OnInit{
     //step 2 ijectaddform control
     private formBuilder: FormBuilder, private cartService:CartService,
       private dropdownFormServce:DropdownFormService, private checkoutService: CheckoutService,
-       private router: Router, private login:LoginService,  private snack: MatSnackBar,) 
+       private router: Router, private login:LoginService,  private snack: MatSnackBar, private modeService: ModeService) 
       {}
 
     ngOnInit(): void {
+
+           // Subscribe to mode changes
+ this.modeService.currentMode$.subscribe((mode) => {
+  this.currentMode = mode;
+ // console.log("MODE Wishlist"+ this.currentMode);
+  
+});
 
       this.reviewCartDetails();
 
