@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md bg-{{mode}} navbar-{{mode}}">
+<nav class="navbar navbar-expand{-sm|-md|-lg|-xl|-xxl} bg-{{mode}} navbar-{{mode}}">
   <div id="mySidenav" class="sidenav bg-{{mode}} " [style.width]="sidenavWidth" tabindex="0" >
     <a style="cursor: pointer;" class="closebtn bg-{{mode}}" tabindex="0" (keydown)="closeNav()" (click)="closeNav()">&times;</a>
     <a routerLink="/aboutus" >About Us</a>
@@ -18,9 +18,9 @@
         <img width="35" height="30" [src]="mode === 'light' ? 'https://img.icons8.com/ios-glyphs/30/moon-symbol.png' : 'https://img.icons8.com/external-flat-papa-vector/78/external-Light-Mode-interface-flat-papa-vector.png'" alt="day-and-night"/>
       </a>
      </div>
- 
-
 </nav>
+
+
 
 
 

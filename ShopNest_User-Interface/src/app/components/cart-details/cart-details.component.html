@@ -1,8 +1,8 @@
 <div class="container">
     <div style="margin-top: 10px;">
-<div class="card text-bg-{{currentMode}}">
+
     <div *ngIf="cartItems.length > 0">
-  
+        <div class="card text-bg-{{currentMode}}">
         <table class="table table-hover table-{{currentMode}}">
             <thead>
             <tr>
@@ -67,13 +67,13 @@
         </table>
   
     </div>
-  
+</div>
     <!-- if cart is empty then display a message -->
-    <div *ngIf="cartItems.length == 0" class="alert alert-warning col-md-12 mt-2" role="alert">
+    <div *ngIf="cartItems.length == 0" class="empty alert alert-warning col-md-12 mt-2" role="alert">
         Your shopping cart is empty. 
     </div>
   
-  </div>
+  
   
 </div>
 </div>
