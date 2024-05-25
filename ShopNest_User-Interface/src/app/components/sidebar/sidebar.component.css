@@ -5,16 +5,20 @@
 #search-box{
     margin-top: 5px;
     margin-left: 5px;
-    margin-right: 120px;
+    margin-right: 5px;
+}
+
+.search-100{
+    width: 40vw;
 }
 
 #welcome{
-    margin-right: 130px;
+    margin-left: 5px;
     padding: 10px;
     font-size: 16px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1241px) {
 
     #search-box{
         
@@ -25,3 +29,38 @@
         
     }
 }
+@media (max-width: 947px) {
+    
+    .search-100{
+        width: 50vw;
+    }
+}
+
+@media (max-width: 856px) {
+
+    #welcome{
+        margin-left: 20px;
+        
+    }
+    
+    .search-100{
+        width: 100vw;
+    }
+}
+
+@media (max-width: 500px) {
+    
+    .search-100{
+        width: 100%;
+    }
+
+    #search-box{
+        
+        margin-right: 0px;
+    }
+    #welcome{
+        margin-right: 0px;
+        
+    }
+}
+

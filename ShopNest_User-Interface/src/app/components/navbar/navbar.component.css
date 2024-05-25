@@ -3,7 +3,7 @@
   font-weight: bold;
   font-size: 28px; /* Adjust the font size as needed */
   margin: 0; /* Remove any default margin to ensure it's centered */
-  margin-left: 513px;
+  margin-left: 540px;
   padding: 0px 29px;
   font-size: xxx-large;
 }
@@ -13,11 +13,90 @@
 }
 
 .mode{
-margin-left: 370px;
+margin-left: 490px;
 }
 
+@media (max-width: 1403px) {
+  .navbar-title{
+    margin-left: 470px;
+    padding: 0px 0px;
+  }
+  .mode{
+    margin-left: 470px;
+    }  
+
+  }
+
+@media (max-width: 1256px) {
+  .navbar-title{
+    margin-left: 430px;
+    padding: 0px 0px;
+  }
+  .mode{
+    margin-left: 430px;
+    }  
+
+  }
+
+  @media (max-width: 1175px) {
+    .navbar-title{
+      margin-left: 400px;
+      padding: 0px 0px;
+    }
+    .mode{
+      margin-left: 360px;
+      }  
+  
+    }
+
+  @media (max-width: 1085px) {
+    .navbar-title{
+      margin-left: 340px;
+      padding: 0px 0px;
+    }
+    .mode{
+      margin-left: 280px;
+      } 
+    }
+
+    @media (max-width: 941px) {
+      .navbar-title{
+        margin-left: 310px;
+        padding: 0px 0px;
+      }
+      .mode{
+        margin-left: 220px;
+        } 
+      }
+
+      @media (max-width: 845px) {
+        .navbar-title{
+          margin-left: 237px;
+          padding: 0px 0px;
+        }
+        .mode{
+          margin-left: 145px;
+          } 
+        }
+
+    @media (max-width: 698px) {
+      .navbar-title{
+        margin-left: 60px;
+        padding: 0px 0px;
+      }
+      .mode{
+        margin-left: 0px;
+        }
+     
+      }
 
 
+        @media (max-width: 573px) {
+          .mode{
+          margin-left: 0px;
+          }
+          }
+    
 @media (max-width: 500px) {
 .navbar-title{
   margin-left: 0px;
@@ -30,6 +109,7 @@ margin-left: 370px;
 margin-left: 0px;
 }
 }
+
 
 .example-spacer {
 flex: 1 1 auto;
