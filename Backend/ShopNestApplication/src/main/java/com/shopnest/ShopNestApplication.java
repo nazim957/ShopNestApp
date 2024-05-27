@@ -49,7 +49,7 @@ public class ShopNestApplication {
 	@Autowired
 	private ProductController productController;
 
-	@Scheduled(fixedRate = 30000)
+	@Scheduled(fixedRate = 200000)
 	public void callGetAllProducts() {
 		ResponseEntity<List<Product>> response = productController.getAllProducts();
 		// You can add some logging or handling here if needed
