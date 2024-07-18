@@ -5,7 +5,8 @@
   margin: 0; /* Remove any default margin to ensure it's centered */
   margin-left: 540px;
   padding: 0px 29px;
-  font-size: xxx-large;
+  font-size: xxx-large; 
+  cursor: pointer;
 }
 
 .navbar-brand{
